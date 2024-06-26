@@ -1,0 +1,25 @@
+.container {
+  margin-left: 144px;
+  padding: 21px 24px 0;
+  height: calc(100% - 96.92px);
+}
+
+.article {
+  background-color: #fff;
+  height: calc(100% - 107px);
+  padding: 50px;
+  overflow-y: scroll;
+}
+
+.article::-webkit-scrollbar {
+  width: 5px;
+}
+
+.article::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+.article::-webkit-scrollbar-thumb {
+  background-color: #7dd5f7;
+  border-radius: 8px;
+}

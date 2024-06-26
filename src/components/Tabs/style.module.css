@@ -1,0 +1,26 @@
+.tabsHeader {
+  height: 107px;
+  border-radius: 15px 15px 4px 4px;
+  background-color: #3b66ba;
+  display: flex;
+  gap: 32px;
+  padding: 68px 50px 0;
+}
+
+.link {
+  font-family: PTSans, sans-serif;
+  text-decoration: none;
+  font-size: 24px;
+  line-height: 31.06px;
+  font-weight: 400;
+  color: #ffffff;
+  background: none;
+  border: none;
+}
+
+.rectangle {
+  height: 6px;
+  margin-top: 2px;
+  border-radius: 4px 4px 0px 0px;
+  background: #7dd5f7;
+}
