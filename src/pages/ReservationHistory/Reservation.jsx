@@ -1,7 +1,7 @@
 import { memo, useMemo } from "react";
 import style from "./style.module.css";
 
-const Reservation = memo(function Reservation({ element, doFunc }) {
+const Reservation = memo(function Reservation({ element, doFunc, current }) {
   const status = useMemo(() => {
     return {
       confirmed: { text: "Подтверждено", color: "#73D725" },
@@ -27,7 +27,7 @@ const Reservation = memo(function Reservation({ element, doFunc }) {
       </li>
 
       <button onClick={() => doFunc(element)} className="btn">
-        Повторить
+        {current ? "Отменить" : "Повторить"}
       </button>
     </article>
   );

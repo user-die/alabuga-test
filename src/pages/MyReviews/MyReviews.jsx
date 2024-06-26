@@ -9,7 +9,7 @@ const MyReviews = memo(function MyReviews() {
         author: "Иванова Анна",
         img: "",
         type: "СПА",
-        date: "26.06.24",
+        date: "27.06.2024",
         time: "14:40",
         description: "Очень понравилось, обязательно приду ещё раз!",
         stars: 5.0,
@@ -42,7 +42,7 @@ const MyReviews = memo(function MyReviews() {
         date: "22.06.24",
         time: "14:40",
         description: "Очень понравилось, обязательно приду ещё раз!",
-        stars: 5.0,
+        stars: 4.8,
       },
       {
         id: 5,

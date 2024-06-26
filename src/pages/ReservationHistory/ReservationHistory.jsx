@@ -1,5 +1,6 @@
 import { memo, useCallback, useMemo, useState } from "react";
 import style from "./style.module.css";
+import Reservation from "./Reservation";
 
 const ReservationHistory = memo(function ReservationHistory() {
   const [currents, setCurrents] = useState([
@@ -196,9 +197,10 @@ const ReservationHistory = memo(function ReservationHistory() {
 
       <ul className={style.list}>
         {currents.map((element) => (
-          <ReservationHistory
+          <Reservation
             element={element}
             doFunc={deleteOrder}
+            current={true}
             key={element.id}
           />
         ))}
@@ -210,11 +212,7 @@ const ReservationHistory = memo(function ReservationHistory() {
 
       <ul className={style.list}>
         {reservationsStory.map((element) => (
-          <ReservationHistory
-            element={element}
-            doFunc={repeat}
-            key={element.id}
-          />
+          <Reservation element={element} doFunc={repeat} key={element.id} />
         ))}
       </ul>
     </>

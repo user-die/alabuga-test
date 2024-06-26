@@ -24,7 +24,10 @@ const Container = memo(function Container() {
           { href: "service", name: "Взаимодействие с сервисом" },
         ]}
       />
-      <article className={style.article}>
+      <article
+        id="contain"
+        className={`${style.article} ${active === 2 && style.p0}`}
+      >
         {active === 0 && <Settings />}
         {active === 1 && <ReservationHistory />}
         {active === 2 && <Service />}

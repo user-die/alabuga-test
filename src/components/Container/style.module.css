@@ -11,6 +11,12 @@
   overflow-y: scroll;
 }
 
+.article1 {
+  background-color: #fff;
+  height: calc(100% - 107px);
+  overflow-y: scroll;
+}
+
 .article::-webkit-scrollbar {
   width: 5px;
 }
@@ -22,4 +28,8 @@
 .article::-webkit-scrollbar-thumb {
   background-color: #7dd5f7;
   border-radius: 8px;
+}
+
+.p0 {
+  padding: 0;
 }

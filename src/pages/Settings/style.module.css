@@ -55,6 +55,13 @@
   flex-direction: column;
   gap: 4px;
   font-family: PTSans, sans-serif;
+  font-size: 24px;
+}
+
+.labelRadio {
+  font-family: PTSans, sans-serif;
+  font-size: 20.76px;
+  line-height: 26.86px;
 }
 
 .radio {
@@ -62,8 +69,22 @@
   margin-right: 10px;
 }
 
+.gender {
+  display: flex;
+  height: 103px;
+  align-items: center;
+}
+
 .saveButton {
   align-self: flex-start;
+}
+
+.female {
+  color: #ff9d9d;
+}
+
+.male {
+  color: #7dd5f7;
 }
 
 .form_radio_btn {
@@ -85,7 +106,8 @@
 
 /* Checked */
 .form_radio_btn input[type="radio"]:checked + label {
-  background: #ffe0a6;
+  background: #3b66ba;
+  color: #fff;
 }
 
 /* Hover */

@@ -14,6 +14,7 @@ const routes = [
 
 const Nav = memo(function Nav() {
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState(0);
 
   return (
     <nav
@@ -31,11 +32,14 @@ const Nav = memo(function Nav() {
       </div>
 
       <ul className={style.list}>
-        {routes.map((el) => (
+        {routes.map((el, index) => (
           <Link
+            onClick={() => setActive(index)}
             key={el.name}
             to={el.link}
-            className={`${style.link} ${open && style.linkOpen}`}
+            className={`${style.link} ${open && style.linkOpen} ${
+              active === index && style.active
+            }`}
           >
             {<el.img className={style.svg} />}
 

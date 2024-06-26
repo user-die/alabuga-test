@@ -21,8 +21,10 @@ const Service = memo(function Service() {
   return (
     <>
       <MiniTabs tabs={tabs} changeActive={changeActive} active={active} />
-      {active === 0 && <MyReviews />}
-      {active === 1 && <Comments />}
+      <article style={{ padding: "50px" }}>
+        {active === 0 && <MyReviews />}
+        {active === 1 && <Comments />}
+      </article>
     </>
   );
 });

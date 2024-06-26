@@ -12,9 +12,11 @@ const Comment = memo(function Comment({ item, type }) {
   }, []);
 
   return (
-    <div>
+    <article>
       <p className={style.date}>
-        {item.date === new Date() ? "сегодня" : item.date}{" "}
+        {item.date === new Date().toLocaleDateString("ru")
+          ? `сегодня в ${item.time}`
+          : item.date}{" "}
       </p>
       <li className={style.item}>
         <img src={item.img || defaultAvatar} alt="" />
@@ -43,11 +45,11 @@ const Comment = memo(function Comment({ item, type }) {
         ) : (
           <div className={style.feedbackDiv}>
             <img src={star} alt="" />
-            <p className={style.starCount}>{item.stars}</p>
+            <p className={style.starCount}>{item.stars.toFixed(1)}</p>
           </div>
         )}
       </li>
-    </div>
+    </article>
   );
 });
 

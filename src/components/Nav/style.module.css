@@ -49,13 +49,15 @@
   padding: 12px;
   border-radius: 15px;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .linkOpen {
-  display: flex;
   gap: 16px;
   width: 237px;
-  align-items: center;
+  justify-content: normal;
 }
 
 .p {
@@ -80,4 +82,16 @@
 
 svg {
   fill: #3b66ba;
+}
+
+.active {
+  background: #3b66ba;
+
+  p {
+    color: #ffffff;
+  }
+
+  svg {
+    fill: #ffffff;
+  }
 }
