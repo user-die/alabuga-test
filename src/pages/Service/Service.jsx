@@ -1,7 +1,12 @@
-import { memo, useMemo, useState, useCallback } from "react";
+import { memo, useState, useCallback } from "react";
 import MiniTabs from "../../components/miniTabs/MiniTabs";
 import MyReviews from "../../pages/MyReviews/MyReviews";
 import Comments from "../../pages/Comments/Comments";
+
+const tabs = [
+  { name: "Мои отзывы", href: "/myreviews" },
+  { name: "Замечания", href: "/comments" },
+];
 
 const Service = memo(function Service() {
   const [active, setActive] = useState(0);
@@ -9,14 +14,6 @@ const Service = memo(function Service() {
   const changeActive = useCallback((number) => {
     setActive(number);
   }, []);
-
-  const tabs = useMemo(
-    () => [
-      { name: "Мои отзывы", href: "/myreviews" },
-      { name: "Замечания", href: "/comments" },
-    ],
-    []
-  );
 
   return (
     <>

@@ -1,15 +1,13 @@
-import { memo, useMemo } from "react";
+import { memo } from "react";
 import style from "./style.module.css";
 
-const Reservation = memo(function Reservation({ element, doFunc, isCurrent }) {
-  const status = useMemo(() => {
-    return {
-      confirmed: { text: "Подтверждено", color: "#73D725" },
-      completed: { text: "Состоялось", color: "#7DD5F7" },
-      canceled: { text: "Отмена", color: "#E0675F" },
-    };
-  }, []);
+const status = {
+  confirmed: { text: "Подтверждено", color: "#73D725" },
+  completed: { text: "Состоялось", color: "#7DD5F7" },
+  canceled: { text: "Отмена", color: "#E0675F" },
+};
 
+const Reservation = memo(function Reservation({ element, doFunc, isCurrent }) {
   return (
     <article key={element.id} className={style.div}>
       <li className={style.item}>

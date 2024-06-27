@@ -3,14 +3,12 @@ import style from "./style.module.css";
 import defaultAvatar from "./../../images/defaultAvatar.png";
 import star from "./../../images/star.png";
 
-const Comment = memo(function Comment({ item, type }) {
-  const status = useMemo(() => {
-    return {
-      inProgress: { text: "В процессе", color: "#EFAB44" },
-      completed: { text: "Решено", color: "#73D725" },
-    };
-  }, []);
+const status = {
+  inProgress: { text: "В процессе", color: "#EFAB44" },
+  completed: { text: "Решено", color: "#73D725" },
+};
 
+const Comment = memo(function Comment({ item, type }) {
   return (
     <article>
       <p className={style.date}>

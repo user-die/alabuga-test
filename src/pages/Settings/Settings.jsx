@@ -1,5 +1,5 @@
 import { memo, useCallback, useRef } from "react";
-import {useSelector, useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 import style from "./style.module.css";
 import { setUser } from "../../store/mainSlice";
 
@@ -10,7 +10,6 @@ const Settings = memo(function Settings() {
   const form = useRef(null);
 
   const save = useCallback(() => {
-    
     const formData = new FormData(form.current);
 
     let name = formData.get("name");
@@ -23,10 +22,11 @@ const Settings = memo(function Settings() {
     let department = formData.get("department");
 
     if (form.current.reportValidity()) {
-    dispatch(setUser({ name, phone, tg, email, gender, adress, post, department }));
+      dispatch(
+        setUser({ name, phone, tg, email, gender, adress, post, department })
+      );
     }
-  }, []);
-
+  }, [dispatch]);
 
   return (
     <>
@@ -54,7 +54,7 @@ const Settings = memo(function Settings() {
       >
         <label htmlFor="" className={style.label}>
           ФИО
-          <input type="text" name="name" className={style.input} required/>
+          <input type="text" name="name" className={style.input} required />
         </label>
 
         <label htmlFor="" className={style.label}>
