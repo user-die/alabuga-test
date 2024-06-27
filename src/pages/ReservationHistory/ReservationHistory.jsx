@@ -1,194 +1,20 @@
-import { memo, useCallback, useMemo, useState } from "react";
+import { memo, useCallback, useMemo } from "react";
 import style from "./style.module.css";
 import Reservation from "./Reservation";
+import { deleteRev, repeatRev } from "../../store/mainSlice";
+import {useSelector, useDispatch} from 'react-redux';
 
 const ReservationHistory = memo(function ReservationHistory() {
-  const [currents, setCurrents] = useState([
-    {
-      date: "01.06.2024",
-      time: "16:00",
-      service: "СПА (маникюр)",
-      place: "Пирамида 3 этаж",
-      price: "1500",
-      status: "confirmed",
-      id: 999,
-    },
-  ]);
-
-  const reservationsStory = useMemo(
-    () => [
-      {
-        date: "01.06.2024",
-        time: "16:00",
-        service: "СПА (маникюр)",
-        place: "Пирамида 3 этаж",
-        price: "1500",
-        status: "confirmed",
-        id: 1,
-      },
-      {
-        date: "01.06.2024",
-        time: "16:00",
-        service: "СПА (маникюр)",
-        place: "Пирамида 3 этаж",
-        price: "1500",
-        status: "completed",
-        id: 2,
-      },
-      {
-        date: "01.06.2024",
-        time: "16:00",
-        service: "СПА (маникюр)",
-        place: "Пирамида 3 этаж",
-        price: "1500",
-        status: "canceled",
-        id: 3,
-      },
-      {
-        date: "01.06.2024",
-        time: "16:00",
-        service: "СПА (маникюр)",
-        place: "Пирамида 3 этаж",
-        price: "1500",
-        status: "confirmed",
-        id: 4,
-      },
-      {
-        date: "01.06.2024",
-        time: "16:00",
-        service: "СПА (маникюр)",
-        place: "Пирамида 3 этаж",
-        price: "1500",
-        status: "completed",
-        id: 5,
-      },
-      {
-        date: "01.06.2024",
-        time: "16:00",
-        service: "СПА (маникюр)",
-        place: "Пирамида 3 этаж",
-        price: "1500",
-        status: "canceled",
-        id: 6,
-      },
-      {
-        date: "01.06.2024",
-        time: "16:00",
-        service: "СПА (маникюр)",
-        place: "Пирамида 3 этаж",
-        price: "1500",
-        status: "confirmed",
-        id: 7,
-      },
-      {
-        date: "01.06.2024",
-        time: "16:00",
-        service: "СПА (маникюр)",
-        place: "Пирамида 3 этаж",
-        price: "1500",
-        status: "completed",
-        id: 8,
-      },
-      {
-        date: "01.06.2024",
-        time: "16:00",
-        service: "СПА (маникюр)",
-        place: "Пирамида 3 этаж",
-        price: "1500",
-        status: "canceled",
-        id: 9,
-      },
-      {
-        date: "01.06.2024",
-        time: "16:00",
-        service: "СПА (маникюр)",
-        place: "Пирамида 3 этаж",
-        price: "1500",
-        status: "confirmed",
-        id: 10,
-      },
-      {
-        date: "01.06.2024",
-        time: "16:00",
-        service: "СПА (маникюр)",
-        place: "Пирамида 3 этаж",
-        price: "1500",
-        status: "completed",
-        id: 11,
-      },
-      {
-        date: "01.06.2024",
-        time: "16:00",
-        service: "СПА (маникюр)",
-        place: "Пирамида 3 этаж",
-        price: "1500",
-        status: "canceled",
-        id: 12,
-      },
-      {
-        date: "01.06.2024",
-        time: "16:00",
-        service: "СПА (маникюр)",
-        place: "Пирамида 3 этаж",
-        price: "1500",
-        status: "confirmed",
-        id: 13,
-      },
-      {
-        date: "01.06.2024",
-        time: "16:00",
-        service: "СПА (маникюр)",
-        place: "Пирамида 3 этаж",
-        price: "1500",
-        status: "completed",
-        id: 14,
-      },
-      {
-        date: "01.06.2024",
-        time: "16:00",
-        service: "СПА (маникюр)",
-        place: "Пирамида 3 этаж",
-        price: "1500",
-        status: "canceled",
-        id: 15,
-      },
-      {
-        date: "01.06.2024",
-        time: "16:00",
-        service: "СПА (маникюр)",
-        place: "Пирамида 3 этаж",
-        price: "1500",
-        status: "confirmed",
-        id: 16,
-      },
-      {
-        date: "01.06.2024",
-        time: "16:00",
-        service: "СПА (маникюр)",
-        place: "Пирамида 3 этаж",
-        price: "1500",
-        status: "completed",
-        id: 17,
-      },
-      {
-        date: "01.06.2024",
-        time: "16:00",
-        service: "СПА (маникюр)",
-        place: "Пирамида 3 этаж",
-        price: "1500",
-        status: "canceled",
-        id: 18,
-      },
-    ],
-    []
-  );
+  const currentsRev = useSelector((state) => state.activeReverstation);
+  const reservationsStory = useSelector((state) => state.reversationHistory);
+  const dispatch = useDispatch();
 
   const repeat = useCallback((element) => {
-    setCurrents((currents) => [...currents, element]);
+    dispatch(repeatRev(element))
   }, []);
 
   const deleteOrder = useCallback((element) => {
-    setCurrents((currents) => currents.filter((el) => el.id !== element.id));
+    dispatch(deleteRev(element.id))
   }, []);
 
   return (
@@ -196,11 +22,11 @@ const ReservationHistory = memo(function ReservationHistory() {
       <h1 className={style.heading}>Текущие бронирования</h1>
 
       <ul className={style.list}>
-        {currents.map((element) => (
+        {currentsRev.map((element) => (
           <Reservation
             element={element}
             doFunc={deleteOrder}
-            current={true}
+            isCurrent={true}
             key={element.id}
           />
         ))}

@@ -1,20 +1,16 @@
-import { memo, useCallback, useRef, useState } from "react";
+import { memo, useCallback, useRef } from "react";
+import {useSelector, useDispatch} from 'react-redux';
 import style from "./style.module.css";
+import { setUser } from "../../store/mainSlice";
 
 const Settings = memo(function Settings() {
-  const [userData, setUserData] = useState({
-    name: "Иванова Анна",
-    email: "AnnaIvanova@mail.ru",
-    post: "администратор",
-  });
+  const userData = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
   const form = useRef(null);
 
-  const formChange = useCallback((event) => {
-    event.preventDefault();
-  }, []);
-
   const save = useCallback(() => {
+    
     const formData = new FormData(form.current);
 
     let name = formData.get("name");
@@ -26,8 +22,11 @@ const Settings = memo(function Settings() {
     let post = formData.get("post");
     let department = formData.get("department");
 
-    setUserData({ name, phone, tg, email, gender, adress, post, department });
+    if (form.current.reportValidity()) {
+    dispatch(setUser({ name, phone, tg, email, gender, adress, post, department }));
+    }
   }, []);
+
 
   return (
     <>
@@ -51,16 +50,16 @@ const Settings = memo(function Settings() {
         ref={form}
         action=""
         className={style.form}
-        onChange={(event) => formChange(event)}
+        onChange={(event) => event.preventDefault()}
       >
         <label htmlFor="" className={style.label}>
           ФИО
-          <input type="text" name="name" className={style.input} />
+          <input type="text" name="name" className={style.input} required/>
         </label>
 
         <label htmlFor="" className={style.label}>
           Телефон
-          <input type="text" name="phone" className={style.input} />
+          <input type="tel" name="phone" className={style.input} />
         </label>
 
         <label htmlFor="" className={style.label}>
@@ -70,7 +69,7 @@ const Settings = memo(function Settings() {
 
         <label htmlFor="" className={style.label}>
           E-mail
-          <input type="text" name="email" className={style.input} />
+          <input type="email" name="email" className={style.input} required />
         </label>
 
         <div className={style.gender}>

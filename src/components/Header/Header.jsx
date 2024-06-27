@@ -2,6 +2,7 @@ import { memo, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import style from "./style.module.css";
 import notify from "./../../images/Notify.png";
+import { useSelector } from "react-redux";
 
 const options = {
   month: "long",
@@ -10,7 +11,7 @@ const options = {
 
 const Header = memo(function Header({ count }) {
   const [date, setDate] = useState(new Date());
-  const user = "Анна";
+  const user = useSelector((state) => state.user.name)
 
   useEffect(() => {
     const now = Date.now();
@@ -32,7 +33,7 @@ const Header = memo(function Header({ count }) {
   return (
     <article className={style.header}>
       <section>
-        <p className={style.welcome}>Добро пожаловать, {user}</p>
+        <p className={style.welcome}>Добро пожаловать, {user.split(' ')[[1]]}</p>
 
         <p className={style.time}>{time}</p>
       </section>
